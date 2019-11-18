@@ -1,0 +1,43 @@
+new BowerWebpackPlugin({
+  modulesDirectories: ['bower_components']
+  manifestFiles: 'bower.jason'
+  includes: /.*/
+  excludes: []
+  searchResolvesModulesDirectories: false
+})
+new webpack.ProvidePlugin({
+  $: "jquery"
+  jQuery: "jquery"
+  "windows.jQuery": "jquery"
+})
+
+modulesDirectories: [
+  'web_modules'
+  'node_modules'
+  'bower_components'
+]
+
+new webpack.ResolverPlugin(new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(["bower.json", ".bower.jason"], ["main"]))
+
+debug: true
+devtool: '#source-map'
+output:
+  pathinfo: true
+
+  noParse: [
+    /\.(htm|html)$/
+    /\.md$/
+    /LICENSE/
+    /README/
+    /TODO/
+    /\.php$/
+    /\.pdf$/
+    /\.psd$/
+    /\.[0-9]$/
+    /\.smd$/
+    /\.xhtml$/
+    /\.xml$/
+    /\.cgi$/
+    /\.txt$/
+    /\.sh$/
+  ]
